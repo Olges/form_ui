@@ -1,45 +1,73 @@
-import 'dart:developer';
+import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:form_ui/pages/login_page.dart';
+import 'package:form_ui/pages/main_page.dart';
 
 import '../model/user.dart';
 
-class RegisterFormPage extends StatefulWidget {
-  const RegisterFormPage({super.key});
+import '../translations/locale_keys.g.dart';
+import 'package:http/http.dart' as http;
+
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterFormPage> createState() => _RegisterFormPageState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+          image: DecorationImage(
+          image: AssetImage('assets/images/background.jpg'),
+          fit: BoxFit.cover,
+          )),
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:  [
+            Padding(
+            padding: const EdgeInsets.all(7),
+            child: Text(
+              LocaleKeys.register.tr(),
+              style: const TextStyle(
+                fontSize: 35,
+                color: Colors.deepPurple,
+                fontWeight: FontWeight.bold),
+              ),
+            ),
+            RegisterForm()
+            ],
+          )),
+        ),
+    );
+  }
 }
 
-class _RegisterFormPageState extends State<RegisterFormPage> {
-
-  bool _hidePass = true;
-
+class RegisterForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final _scaffoldKey = GlobalKey<FormState>();
-
+  final _containerKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
+  final _confirmPassController = TextEditingController();
+  final _phoneController = TextEditingController();
 
   final _nameFocus = FocusNode();
-  final _phoneFocus = FocusNode();
   final _passFocus = FocusNode();
+  final _phoneFocus = FocusNode();
 
   User newUser = User();
 
   @override
   void dispose() {
     _nameController.dispose();
-    _phoneController.dispose();
     _emailController.dispose();
     _passController.dispose();
+    _confirmPassController.dispose();
     _nameFocus.dispose();
-    _phoneFocus.dispose();
     _passFocus.dispose();
-    super.dispose();
   }
 
   void _fieldFocusChange(
@@ -50,133 +78,138 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('images/background.jpg'),
-              fit: BoxFit.cover,
-            )),
-        child: Container(
-            child: Form(
-              key: _formKey,
-              child: Container(
-
-                alignment: Alignment.center,
-                child: Column(
-                  // padding: const EdgeInsets.all(16.0),
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const ColoredBox(color: Colors.white),
-                    TextFormField(
-                      focusNode: _nameFocus,
-                      autofocus: true,
-                      onFieldSubmitted: (_) {
-                        _fieldFocusChange(context, _nameFocus, _phoneFocus);
-                      },
-                      controller: _nameController,
-                      decoration: InputDecoration(
-                        labelText: 'Full Name *',
-                        hintText: 'What do people call you?',
-                        prefixIcon: const Icon(Icons.person),
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            _nameController.clear();
-                          },
-                          child: const Icon(
-                            Icons.delete_outline,
-                            color: Colors.red,
-                          ),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                        ),
-                      ),
-                      onSaved: (value) => newUser.name = value!,
-                    ), // Name
-                    const SizedBox(height: 10),
-                    TextFormField(
-                      controller: _emailController,
-                      decoration: const InputDecoration(
-                        labelText: 'Email Address',
-                        hintText: 'Enter a email address',
-                        icon: Icon(Icons.mail),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      // validator: _validateEmail,
-                      onSaved: (value) => newUser.email = value!,
-                    ), // email
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      focusNode: _phoneFocus,
-                      onFieldSubmitted: (_) {
-                        _fieldFocusChange(context, _phoneFocus, _passFocus);
-                      },
-                      controller: _phoneController,
-                      decoration: InputDecoration(
-                        labelText: 'Phone Number *',
-                        hintText: 'Where can we reach you?',
-                        helperText: 'Phone format: (XXX)XXX-XXXX',
-                        prefixIcon: const Icon(Icons.call),
-                        suffixIcon: GestureDetector(
-                          onLongPress: () {
-                            _phoneController.clear();
-                          },
-                          child: const Icon(
-                            Icons.delete_outline,
-                            color: Colors.red,
-                          ),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.black, width: 2.0),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                        ),
-                      ),
-                      keyboardType: TextInputType.phone,
-                      inputFormatters: [
-                        // FilteringTextInputFormatter.digitsOnly,
-                        FilteringTextInputFormatter(RegExp(r'^[()\d -]{1,15}$'),
-                            allow: true),
-                      ],
-                      onSaved: (value) => newUser.phone = value!,
-                    ), // Phone
-                    const SizedBox(height: 10),
-                    TextFormField(
-                      focusNode: _passFocus,
-                      controller: _passController,
-                      obscureText: _hidePass,
-                      maxLength: 8,
-                      decoration: InputDecoration(
-                        labelText: 'Password *',
-                        hintText: 'Enter the password',
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                              _hidePass ? Icons.visibility : Icons.visibility_off),
-                          onPressed: () {
-                            setState(() {
-                              _hidePass = !_hidePass;
-                            });
-                          },
-                        ),
-                        icon: const Icon(Icons.security),
-                      ),
-                    ), // password
-                    const SizedBox(height: 10),
-                  ],
+    return Container(
+      key: _containerKey,
+      width: 300,
+      height: 340,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+      ),
+      child: ListView(
+        key: _formKey,
+        children: [
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            child: TextFormField(
+              focusNode: _nameFocus,
+              controller: _nameController,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.mail),
+                border: const OutlineInputBorder(),
+                hintText: LocaleKeys.inputusername.tr(),
+              ),
+              validator: validateName,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            child: TextFormField(
+              controller: _phoneController,
+              focusNode: _phoneFocus,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.phone),
+                border: const OutlineInputBorder(),
+                hintText: LocaleKeys.inputphone.tr(),
+              ),
+              // validator: validatePhoneNumber,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            child: TextFormField(
+              controller: _passController,
+              focusNode: _passFocus,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.key),
+                border: const OutlineInputBorder(),
+                hintText: LocaleKeys.inputpassword.tr(),
+              ),
+              validator: _validatePassword,
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
                 ),
               ),
-            )),
+              onPressed: _submitForm,
+              child: Text(LocaleKeys.buttonSubmit.tr()),
+            ),
+          ),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(LocaleKeys.haveacc.tr()),
+                TextButton(
+                    style: TextButton.styleFrom(foregroundColor: Colors.deepPurple),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
+                    child: Text(LocaleKeys.buttonSign.tr()))
+              ],
+            ),
+          )
+        ],
       ),
     );
+  }
+
+  void _submitForm() {
+    {
+      const url = '';
+      http.post(Uri.parse(url),
+          body: jsonEncode({
+            'name': _nameController.text,
+            'phone': _phoneController.text,
+            'password': _passController.text,
+          }));
+    }
+  }
+
+  String? validateName(String? value) {
+    final nameExp = RegExp(r'^[A-Za-z ]+$');
+    if (value == null) {
+      return 'Name is required.';
+    } else if (!nameExp.hasMatch(value)) {
+      return 'Please enter alphabetical characters.';
+    } else {
+      return null;
+    }
+  }
+
+  bool validatePhoneNumber(String input) {
+    final phoneExp = RegExp(r'^\(\d\d\d\)\d\d\d\-\d\d\d\d$');
+    return phoneExp.hasMatch(input);
+  }
+
+  String? validateEmail(String? value) {
+    if (value == null) {
+      return 'Email cannot be empty';
+    } else if (!_emailController.text.contains('@')) {
+      return 'Invalid email address';
+    } else {
+      return null;
+    }
+  }
+
+  String? _validatePassword(String? value) {
+    if (_passController.text.length != 8) {
+      return '8 character required for password';
+    } else if (_confirmPassController.text != _passController.text) {
+      return 'Password does not match';
+    } else {
+      return null;
+    }
   }
 }
