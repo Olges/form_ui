@@ -82,7 +82,7 @@ class LoginForm extends StatelessWidget {
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
+                primary: Colors.deepPurple,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -105,7 +105,7 @@ class LoginForm extends StatelessWidget {
                 Text(LocaleKeys.noAcc.tr()),
                 TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.deepPurple
+                        primary: Colors.deepPurple
                     ),
                     onPressed: () {
                       Navigator.push(

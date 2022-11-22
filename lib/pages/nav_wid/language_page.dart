@@ -17,7 +17,7 @@ class _LanguagePage extends State<LanguagePage> {
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
         minimumSize: const Size(150, 70),
-        backgroundColor: Colors.white,
+        primary: Colors.white,
         // primary instead of bg (maybe)
         textStyle: const TextStyle(
             fontSize: 20, color: Colors.purple, fontWeight: FontWeight.w400));
