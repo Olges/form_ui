@@ -101,6 +101,7 @@ class RegisterForm extends StatelessWidget {
                 hintText: LocaleKeys.inputusername.tr(),
               ),
               validator: validateName,
+              onSaved: (value) => newUser.name = value!,
             ),
           ),
           Padding(
@@ -113,7 +114,7 @@ class RegisterForm extends StatelessWidget {
                 border: OutlineInputBorder(),
                 hintText: LocaleKeys.inputphone.tr(),
               ),
-              // validator: validatePhoneNumber,
+              onSaved: (value) => newUser.phone = value!,
             ),
           ),
           Padding(
@@ -127,6 +128,7 @@ class RegisterForm extends StatelessWidget {
                 hintText: LocaleKeys.inputpassword.tr(),
               ),
               validator: _validatePassword,
+              onSaved: (value) => newUser.email = value!,
             ),
           ),
           Center(

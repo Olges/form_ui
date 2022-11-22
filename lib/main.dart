@@ -11,11 +11,11 @@ void main() async{
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('kk'), Locale('en'), Locale('ru')],
-      fallbackLocale: const Locale('ru'),
+      supportedLocales: [Locale('kk'), Locale('en'), Locale('ru')],
+      fallbackLocale:  Locale('ru'),
       path: 'assets/translations',
-      assetLoader: const CodegenLoader(),
-      child: const MyApp(),
+      assetLoader:  CodegenLoader(),
+      child:  MyApp(),
     ),);
 }
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LanguagePage(),
+      home:  LanguagePage(),
     );
   }
 }
