@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -38,18 +36,18 @@ class _LanguagePage extends State<LanguagePage> {
                 ElevatedButton(
                     style: style,
                     onPressed: () async {
-                      await context.setLocale(const Locale('ru'));
+                      await context.setLocale(Locale('ru'));
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
+                          builder: (context) => LoginPage(),
                         ),
                       );
                     },
-                    child: const Text(
+                    child: Text(
                       "Русский",
                       style: TextStyle(
-                          color: Colors.purple, fontFamily: 'Montserrat'),
+                          color: Colors.deepPurple, fontFamily: 'Montserrat'),
                     )),
                 const SizedBox(
                   height: 20,
@@ -57,18 +55,18 @@ class _LanguagePage extends State<LanguagePage> {
                 ElevatedButton(
                     style: style,
                     onPressed: () async {
-                      await context.setLocale(const Locale('kk'));
+                      await context.setLocale(Locale('kk'));
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
+                          builder: (context) => LoginPage(),
                         ),
                       );
                     },
-                    child: const Text(
+                    child: Text(
                       "ҚазаҚша",
                       style: TextStyle(
-                          color: Colors.purple, fontFamily: 'Montserrat'),
+                          color: Colors.deepPurple, fontFamily: 'Montserrat'),
                     )),
                 const SizedBox(
                   height: 20,
@@ -76,18 +74,18 @@ class _LanguagePage extends State<LanguagePage> {
                 ElevatedButton(
                     style: style,
                     onPressed: () async {
-                      await context.setLocale(const Locale('en'));
+                      await context.setLocale(Locale('en'));
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
+                          builder: (context) => LoginPage(),
                         ),
                       );
                     },
-                    child: const Text(
+                    child: Text(
                       "English",
                       style: TextStyle(
-                          color: Colors.purple, fontFamily: 'Montserrat'),
+                          color: Colors.deepPurple, fontFamily: 'Montserrat'),
                     )),
               ],
             )),

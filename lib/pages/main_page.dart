@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-//import 'package:form_ui/pages/navi_pages/qr_page.dart';
 import '../constants/colors.dart';
 import '../translations/locale_keys.g.dart';
 
 import 'package:form_ui/pages/nav_wid/home_page.dart';
+import 'package:form_ui/pages/nav_wid/qr_page.dart';
 import 'package:form_ui/pages/nav_wid/profile_page.dart';
 
 //import 'form_ui/map_page.dart';
@@ -18,9 +18,9 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   int _currentIndex = 0;
-  List pages = const [
+  List pages = [
     HomePage(),
-    //QRpage(),
+    QRpage(),
     //MapPage(),
     ProfilePage()
   ];
@@ -43,7 +43,7 @@ class _WelcomePageState extends State<WelcomePage> {
             _currentIndex = newIndex;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),

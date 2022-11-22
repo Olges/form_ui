@@ -26,16 +26,16 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(7),
+                  padding: EdgeInsets.all(7),
                   child: Text(
                     LocaleKeys.welcome.tr(),
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 35,
                         color: Colors.deepPurple,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                const LoginForm()
+                LoginForm()
               ],
             )),
       ),
@@ -60,21 +60,21 @@ class LoginForm extends StatelessWidget {
         children: [
           const SizedBox(height: 30),
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.mail),
-                border: const OutlineInputBorder(),
+                prefixIcon: Icon(Icons.mail),
+                border: OutlineInputBorder(),
                 hintText: LocaleKeys.inputusername.tr(),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.key),
-                border: const OutlineInputBorder(),
+                prefixIcon: Icon(Icons.key),
+                border: OutlineInputBorder(),
                 hintText: LocaleKeys.inputpassword.tr(),
               ),
             ),
@@ -91,7 +91,7 @@ class LoginForm extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const WelcomePage(),
+                    builder: (context) => WelcomePage(),
                   ),
                 );
               },
@@ -111,7 +111,7 @@ class LoginForm extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RegisterPage(),
+                          builder: (context) => RegisterPage(),
                         ),
                       );
                     },

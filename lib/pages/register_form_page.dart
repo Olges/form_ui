@@ -28,10 +28,10 @@ class RegisterPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
             Padding(
-            padding: const EdgeInsets.all(7),
+            padding: EdgeInsets.all(7),
             child: Text(
               LocaleKeys.register.tr(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 35,
                 color: Colors.deepPurple,
                 fontWeight: FontWeight.bold),
@@ -91,39 +91,39 @@ class RegisterForm extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
             child: TextFormField(
               focusNode: _nameFocus,
               controller: _nameController,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.mail),
-                border: const OutlineInputBorder(),
+                prefixIcon: Icon(Icons.mail),
+                border: OutlineInputBorder(),
                 hintText: LocaleKeys.inputusername.tr(),
               ),
               validator: validateName,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
             child: TextFormField(
               controller: _phoneController,
               focusNode: _phoneFocus,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.phone),
-                border: const OutlineInputBorder(),
+                prefixIcon: Icon(Icons.phone),
+                border: OutlineInputBorder(),
                 hintText: LocaleKeys.inputphone.tr(),
               ),
               // validator: validatePhoneNumber,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
             child: TextFormField(
               controller: _passController,
               focusNode: _passFocus,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.key),
-                border: const OutlineInputBorder(),
+                prefixIcon: Icon(Icons.key),
+                border: OutlineInputBorder(),
                 hintText: LocaleKeys.inputpassword.tr(),
               ),
               validator: _validatePassword,
@@ -152,7 +152,7 @@ class RegisterForm extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginPage(),
+                          builder: (context) => LoginPage(),
                         ),
                       );
                     },

@@ -20,9 +20,9 @@ class HomePage extends StatelessWidget {
               fit: BoxFit.cover,
             )),
         child: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: EdgeInsets.all(15),
           child: Column(
-            children: const [
+            children: [
               Card(
                 child: ListTile(
                   title: Text('Post #1'),
