@@ -16,6 +16,7 @@ class _LanguagePage extends State<LanguagePage> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         minimumSize: const Size(150, 70),
         primary: Colors.white,
         // primary instead of bg (maybe)
@@ -50,7 +51,7 @@ class _LanguagePage extends State<LanguagePage> {
                           color: Colors.deepPurple, fontFamily: 'Montserrat'),
                     )),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 ElevatedButton(
                     style: style,
@@ -69,7 +70,7 @@ class _LanguagePage extends State<LanguagePage> {
                           color: Colors.deepPurple, fontFamily: 'Montserrat'),
                     )),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 ElevatedButton(
                     style: style,
