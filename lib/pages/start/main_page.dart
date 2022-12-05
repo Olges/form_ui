@@ -4,7 +4,7 @@ import '../../translations/locale_keys.g.dart';
 
 import 'package:form_ui/pages/nav_wid/animation/animation.dart';
 import 'package:form_ui/pages/nav_wid/map/map_page.dart';
-import 'package:form_ui/pages/home_page.dart';
+import 'package:form_ui/pages/nav_wid/news/home_page.dart';
 import 'package:form_ui/pages/nav_wid/QR/qr_page.dart';
 import 'package:form_ui/pages/nav_wid/profile/profile_page.dart';
 
