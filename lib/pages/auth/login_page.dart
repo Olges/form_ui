@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:form_ui/pages/main_page.dart';
-import 'package:form_ui/pages/register_form_page.dart';
+import 'package:form_ui/pages/start/main_page.dart';
+import 'package:form_ui/pages/auth/register_form_page.dart';
 
-import '../translations/locale_keys.g.dart';
+import '../../translations/locale_keys.g.dart';
 
-import '../model/user.dart';
+import '../../model/user.dart';
 
 
 class LoginPage extends StatelessWidget {

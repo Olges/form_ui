@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:form_ui/pages/login_page.dart';
-import 'package:form_ui/pages/main_page.dart';
+import 'package:form_ui/pages/auth/login_page.dart';
+import 'package:form_ui/pages/start/main_page.dart';
 
-import '../model/user.dart';
+import '../../model/user.dart';
 
-import '../translations/locale_keys.g.dart';
+import '../../translations/locale_keys.g.dart';
 import 'package:http/http.dart' as http;
 
 class RegisterPage extends StatelessWidget {

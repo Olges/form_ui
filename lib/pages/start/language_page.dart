@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:form_ui/pages/login_page.dart';
+import 'package:form_ui/pages/auth/login_page.dart';
 
 import '../../model/user.dart';
 

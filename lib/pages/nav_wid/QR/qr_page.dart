@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:form_ui/constants/colors.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QRpage extends StatefulWidget {
@@ -97,7 +96,7 @@ class _QRpageState extends State<QRpage> {
       key: qrKey,
       onQRViewCreated: _onQRViewCreated,
       overlay: QrScannerOverlayShape(
-          borderColor: AppColors.primary,
+          borderColor: Colors.deepPurple,
           borderRadius: 10,
           borderLength: 30,
           borderWidth: 10,

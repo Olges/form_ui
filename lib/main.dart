@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:form_ui/pages/nav_wid/home_page.dart';
-import 'package:form_ui/pages/nav_wid/language_page.dart';
-import 'package:form_ui/pages/login_page.dart';
-import 'package:form_ui/pages/register_form_page.dart';
+import 'package:form_ui/pages/home_page.dart';
+import 'package:form_ui/pages/start/language_page.dart';
+import 'package:form_ui/pages/auth/login_page.dart';
+import 'package:form_ui/pages/auth/register_form_page.dart';
 import 'package:form_ui/translations/codegen_loader.g.dart';
 
 void main() async{

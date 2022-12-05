@@ -1,18 +1,14 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-// import 'package:login_page_hw/pages/navi_pages/profile/ui/profile_page.dart';
-// import 'package:login_page_hw/pages/navi_pages/qr/ui/qr_page.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../translations/locale_keys.g.dart';
 
- import 'package:form_ui/constants/colors.dart';
-import 'package:form_ui/translations/locale_keys.g.dart';
-
-// import 'navi_pages/animation/ui/animation_page.dart';
-// import 'navi_pages/news/ui/news_page.dart';
-// import 'navi_pages/map/ui/map_page.dart';
-
-import 'package:form_ui/pages/nav_wid/home_page.dart';
+import 'package:form_ui/pages/nav_wid/animation/animation.dart';
+import 'package:form_ui/pages/nav_wid/map/map_page.dart';
+import 'package:form_ui/pages/home_page.dart';
 import 'package:form_ui/pages/nav_wid/QR/qr_page.dart';
 import 'package:form_ui/pages/nav_wid/profile/profile_page.dart';
+
+//import 'form_ui/map_page.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -26,8 +22,8 @@ class _WelcomePageState extends State<WelcomePage> {
   List pages = [
     HomePage(),
     QRpage(),
-    //MapPage(),
-    //AnimationPage(),
+    MapPage(),
+    AnimationPage(),
     ProfilePage()
   ];
 
@@ -40,7 +36,7 @@ class _WelcomePageState extends State<WelcomePage> {
       ),
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.primary,
+        selectedItemColor: Colors.deepPurple,
         unselectedItemColor: Colors.black26,
         currentIndex: _currentIndex,
         elevation: 5,
@@ -49,7 +45,7 @@ class _WelcomePageState extends State<WelcomePage> {
             _currentIndex = newIndex;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
@@ -66,8 +62,8 @@ class _WelcomePageState extends State<WelcomePage> {
             label: 'Map',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.animation_outlined),
-            activeIcon: Icon(Icons.animation),
+            icon: Icon(Icons.scatter_plot_outlined),
+            activeIcon: Icon(Icons.scatter_plot_rounded),
             label: 'Animation',
           ),
           BottomNavigationBarItem(
