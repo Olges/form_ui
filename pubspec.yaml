@@ -59,6 +59,7 @@ dependencies:
   json_annotation: ^4.7.0
   retrofit: ^3.0.1+1
   http: ^0.13.5
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +87,14 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
+    - assets/icons/
+    - assets/animation/
+
+flutter_icons:
+  android: "app_icon"
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
